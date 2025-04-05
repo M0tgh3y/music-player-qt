@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,8 +22,7 @@ class Ui_musicplayer
 {
 public:
     QWidget *centralwidget;
-    QLabel *label;
-    QMenuBar *menubar;
+    QLabel *backgroundimage;
 
     void setupUi(QMainWindow *musicplayer)
     {
@@ -36,14 +34,11 @@ public:
         musicplayer->setWindowIcon(icon);
         centralwidget = new QWidget(musicplayer);
         centralwidget->setObjectName("centralwidget");
-        label = new QLabel(centralwidget);
-        label->setObjectName("label");
-        label->setGeometry(QRect(100, 110, 63, 20));
+        backgroundimage = new QLabel(centralwidget);
+        backgroundimage->setObjectName("backgroundimage");
+        backgroundimage->setGeometry(QRect(0, 0, 880, 550));
+        backgroundimage->setStyleSheet(QString::fromUtf8("background-color: rgb(17, 47, 76);"));
         musicplayer->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(musicplayer);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 880, 25));
-        musicplayer->setMenuBar(menubar);
 
         retranslateUi(musicplayer);
 
@@ -53,7 +48,7 @@ public:
     void retranslateUi(QMainWindow *musicplayer)
     {
         musicplayer->setWindowTitle(QCoreApplication::translate("musicplayer", "Music Player", nullptr));
-        label->setText(QCoreApplication::translate("musicplayer", "TextLabel", nullptr));
+        backgroundimage->setText(QCoreApplication::translate("musicplayer", "TextLabel", nullptr));
     } // retranslateUi
 
 };
