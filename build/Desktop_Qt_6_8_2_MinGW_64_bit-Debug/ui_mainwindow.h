@@ -15,6 +15,7 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,17 +26,20 @@ public:
     QWidget *centralwidget;
     QLabel *backgroundimage;
     QFrame *titleframe;
-    QLabel *label;
-    QLabel *label_2;
+    QLabel *icon;
+    QLabel *motplayer;
+    QPushButton *close;
+    QPushButton *maxi;
+    QPushButton *mini;
 
     void setupUi(QMainWindow *musicplayer)
     {
         if (musicplayer->objectName().isEmpty())
             musicplayer->setObjectName("musicplayer");
         musicplayer->resize(880, 550);
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/image/icons/music2.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        musicplayer->setWindowIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/image/icons/music2.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        musicplayer->setWindowIcon(icon1);
         centralwidget = new QWidget(musicplayer);
         centralwidget->setObjectName("centralwidget");
         backgroundimage = new QLabel(centralwidget);
@@ -50,18 +54,31 @@ public:
         titleframe->setGeometry(QRect(0, 0, 880, 40));
         titleframe->setFrameShape(QFrame::Shape::StyledPanel);
         titleframe->setFrameShadow(QFrame::Shadow::Raised);
-        label = new QLabel(titleframe);
-        label->setObjectName("label");
-        label->setGeometry(QRect(5, 0, 40, 40));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/image/icons/music.png")));
-        label->setScaledContents(true);
-        label_2 = new QLabel(titleframe);
-        label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(50, 0, 151, 40));
+        icon = new QLabel(titleframe);
+        icon->setObjectName("icon");
+        icon->setGeometry(QRect(5, 0, 40, 40));
+        icon->setPixmap(QPixmap(QString::fromUtf8(":/image/icons/music.png")));
+        icon->setScaledContents(true);
+        motplayer = new QLabel(titleframe);
+        motplayer->setObjectName("motplayer");
+        motplayer->setGeometry(QRect(50, 0, 151, 40));
         QFont font1;
+        font1.setFamilies({QString::fromUtf8("Arial")});
         font1.setPointSize(16);
-        font1.setBold(true);
-        label_2->setFont(font1);
+        font1.setBold(false);
+        font1.setItalic(false);
+        motplayer->setFont(font1);
+        motplayer->setStyleSheet(QString::fromUtf8("font: 16pt \"Arial\";\n"
+"color: rgb(85, 170, 255);"));
+        close = new QPushButton(titleframe);
+        close->setObjectName("close");
+        close->setGeometry(QRect(830, 5, 40, 30));
+        maxi = new QPushButton(titleframe);
+        maxi->setObjectName("maxi");
+        maxi->setGeometry(QRect(780, 5, 40, 30));
+        mini = new QPushButton(titleframe);
+        mini->setObjectName("mini");
+        mini->setGeometry(QRect(730, 5, 40, 30));
         musicplayer->setCentralWidget(centralwidget);
 
         retranslateUi(musicplayer);
@@ -73,8 +90,11 @@ public:
     {
         musicplayer->setWindowTitle(QCoreApplication::translate("musicplayer", "Music Player", nullptr));
         backgroundimage->setText(QString());
-        label->setText(QString());
-        label_2->setText(QCoreApplication::translate("musicplayer", "Mot Player", nullptr));
+        icon->setText(QString());
+        motplayer->setText(QCoreApplication::translate("musicplayer", "Mot Player", nullptr));
+        close->setText(QCoreApplication::translate("musicplayer", "-", nullptr));
+        maxi->setText(QCoreApplication::translate("musicplayer", "-", nullptr));
+        mini->setText(QCoreApplication::translate("musicplayer", "-", nullptr));
     } // retranslateUi
 
 };
