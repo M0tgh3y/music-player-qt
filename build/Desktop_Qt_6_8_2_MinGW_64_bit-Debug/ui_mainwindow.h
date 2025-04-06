@@ -73,12 +73,18 @@ public:
         close = new QPushButton(titleframe);
         close->setObjectName("close");
         close->setGeometry(QRect(830, 5, 40, 30));
+        QIcon icon2(QIcon::fromTheme(QIcon::ThemeIcon::ApplicationExit));
+        close->setIcon(icon2);
         maxi = new QPushButton(titleframe);
         maxi->setObjectName("maxi");
-        maxi->setGeometry(QRect(780, 5, 40, 30));
+        maxi->setGeometry(QRect(785, 5, 40, 30));
+        QIcon icon3(QIcon::fromTheme(QString::fromUtf8("zoom-in")));
+        maxi->setIcon(icon3);
         mini = new QPushButton(titleframe);
         mini->setObjectName("mini");
-        mini->setGeometry(QRect(730, 5, 40, 30));
+        mini->setGeometry(QRect(740, 5, 40, 30));
+        QIcon icon4(QIcon::fromTheme(QString::fromUtf8("zoom-out")));
+        mini->setIcon(icon4);
         musicplayer->setCentralWidget(centralwidget);
 
         retranslateUi(musicplayer);
@@ -92,9 +98,9 @@ public:
         backgroundimage->setText(QString());
         icon->setText(QString());
         motplayer->setText(QCoreApplication::translate("musicplayer", "Mot Player", nullptr));
-        close->setText(QCoreApplication::translate("musicplayer", "-", nullptr));
-        maxi->setText(QCoreApplication::translate("musicplayer", "-", nullptr));
-        mini->setText(QCoreApplication::translate("musicplayer", "-", nullptr));
+        close->setText(QString());
+        maxi->setText(QString());
+        mini->setText(QString());
     } // retranslateUi
 
 };
