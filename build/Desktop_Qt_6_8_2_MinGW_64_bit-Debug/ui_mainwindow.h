@@ -17,6 +17,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -44,8 +45,9 @@ public:
     QPushButton *stop;
     QPushButton *last;
     QPushButton *next;
-    QPushButton *next_2;
-    QFrame *line;
+    QPushButton *repeat;
+    QSlider *slider;
+    QLabel *time;
 
     void setupUi(QMainWindow *musicplayer)
     {
@@ -139,6 +141,7 @@ public:
         voltext->setObjectName("voltext");
         voltext->setGeometry(QRect(155, 390, 30, 30));
         voltext->setFont(font2);
+        voltext->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
         voltext->setAlignment(Qt::AlignmentFlag::AlignCenter);
         songline = new QFrame(centralwidget);
         songline->setObjectName("songline");
@@ -150,8 +153,7 @@ public:
         things = new QFrame(songline);
         things->setObjectName("things");
         things->setGeometry(QRect(0, 0, 280, 50));
-        things->setStyleSheet(QString::fromUtf8("\n"
-"background-color: rgb(255, 0, 127);\n"
+        things->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 0, 127);\n"
 "border-radius: 10px;\n"
 ""));
         things->setFrameShape(QFrame::Shape::StyledPanel);
@@ -186,19 +188,33 @@ public:
         next->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         QIcon icon7(QIcon::fromTheme(QIcon::ThemeIcon::MediaSeekForward));
         next->setIcon(icon7);
-        next_2 = new QPushButton(things);
-        next_2->setObjectName("next_2");
-        next_2->setGeometry(QRect(225, 10, 30, 30));
-        next_2->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        repeat = new QPushButton(things);
+        repeat->setObjectName("repeat");
+        repeat->setGeometry(QRect(225, 10, 30, 30));
+        repeat->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         QIcon icon8(QIcon::fromTheme(QIcon::ThemeIcon::SyncSynchronizing));
-        next_2->setIcon(icon8);
-        line = new QFrame(songline);
-        line->setObjectName("line");
-        line->setGeometry(QRect(300, 0, 540, 50));
-        line->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 170, 0);\n"
-"border-radius: 10px;"));
-        line->setFrameShape(QFrame::Shape::StyledPanel);
-        line->setFrameShadow(QFrame::Shadow::Raised);
+        repeat->setIcon(icon8);
+        slider = new QSlider(songline);
+        slider->setObjectName("slider");
+        slider->setGeometry(QRect(310, 15, 320, 20));
+        slider->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal{\n"
+"	border: 1px solid #999999;\n"
+"	height: 16px;\n"
+"	padding: 3px;\n"
+"	background: rgb(0, 170, 0);\n"
+"	margin: 2px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"\n"
+"}\n"
+""));
+        slider->setOrientation(Qt::Orientation::Horizontal);
+        time = new QLabel(songline);
+        time->setObjectName("time");
+        time->setGeometry(QRect(639, 15, 200, 20));
+        time->setFont(font2);
+        time->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+        time->setAlignment(Qt::AlignmentFlag::AlignCenter);
         musicplayer->setCentralWidget(centralwidget);
 
         retranslateUi(musicplayer);
@@ -224,7 +240,8 @@ public:
         stop->setText(QString());
         last->setText(QString());
         next->setText(QString());
-        next_2->setText(QString());
+        repeat->setText(QString());
+        time->setText(QCoreApplication::translate("musicplayer", "00:00:00 / 00:00:00", nullptr));
     } // retranslateUi
 
 };
