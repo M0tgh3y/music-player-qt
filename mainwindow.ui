@@ -46,7 +46,7 @@
       <x>20</x>
       <y>20</y>
       <width>300</width>
-      <height>250</height>
+      <height>300</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -59,7 +59,7 @@ border-radius: 10px;</string>
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="icon">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -76,6 +76,116 @@ border-radius: 10px;</string>
      </property>
      <property name="pixmap">
       <pixmap resource="idk.qrc">:/image/icons/Audio Wave-32.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="curentlyplaying">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>10</y>
+       <width>231</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Currently Playing</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="curentlyplaying_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>231</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="curentlyplaying_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>281</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgba(0, 0, 0, 150);</string>
+     </property>
+     <property name="text">
+      <string>Song name goes here</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="curentlyplaying_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>120</y>
+       <width>231</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Path</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="curentlyplaying_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>150</y>
+       <width>281</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgba(0, 0, 0, 150);</string>
+     </property>
+     <property name="text">
+      <string>Song path goes here</string>
      </property>
     </widget>
    </widget>

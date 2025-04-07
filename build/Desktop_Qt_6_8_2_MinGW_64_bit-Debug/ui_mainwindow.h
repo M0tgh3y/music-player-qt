@@ -25,16 +25,21 @@ public:
     QWidget *centralwidget;
     QLabel *backgroundimage;
     QFrame *frame;
-    QLabel *label;
+    QLabel *icon;
+    QLabel *curentlyplaying;
+    QLabel *curentlyplaying_2;
+    QLabel *curentlyplaying_3;
+    QLabel *curentlyplaying_4;
+    QLabel *curentlyplaying_5;
 
     void setupUi(QMainWindow *musicplayer)
     {
         if (musicplayer->objectName().isEmpty())
             musicplayer->setObjectName("musicplayer");
         musicplayer->resize(880, 550);
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/image/icons/music2.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        musicplayer->setWindowIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/image/icons/music2.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        musicplayer->setWindowIcon(icon1);
         centralwidget = new QWidget(musicplayer);
         centralwidget->setObjectName("centralwidget");
         backgroundimage = new QLabel(centralwidget);
@@ -47,16 +52,47 @@ public:
 ""));
         frame = new QFrame(centralwidget);
         frame->setObjectName("frame");
-        frame->setGeometry(QRect(20, 20, 300, 250));
+        frame->setGeometry(QRect(20, 20, 300, 300));
         frame->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 85, 255);\n"
 "border-radius: 10px;"));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);
-        label = new QLabel(frame);
-        label->setObjectName("label");
-        label->setGeometry(QRect(10, 10, 30, 30));
-        label->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0, 0);"));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/image/icons/Audio Wave-32.png")));
+        icon = new QLabel(frame);
+        icon->setObjectName("icon");
+        icon->setGeometry(QRect(10, 10, 30, 30));
+        icon->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0, 0);"));
+        icon->setPixmap(QPixmap(QString::fromUtf8(":/image/icons/Audio Wave-32.png")));
+        curentlyplaying = new QLabel(frame);
+        curentlyplaying->setObjectName("curentlyplaying");
+        curentlyplaying->setGeometry(QRect(50, 10, 231, 30));
+        QFont font1;
+        font1.setPointSize(14);
+        font1.setBold(true);
+        curentlyplaying->setFont(font1);
+        curentlyplaying->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+        curentlyplaying_2 = new QLabel(frame);
+        curentlyplaying_2->setObjectName("curentlyplaying_2");
+        curentlyplaying_2->setGeometry(QRect(10, 50, 231, 30));
+        curentlyplaying_2->setFont(font1);
+        curentlyplaying_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+        curentlyplaying_3 = new QLabel(frame);
+        curentlyplaying_3->setObjectName("curentlyplaying_3");
+        curentlyplaying_3->setGeometry(QRect(10, 80, 281, 30));
+        QFont font2;
+        font2.setPointSize(12);
+        font2.setBold(true);
+        curentlyplaying_3->setFont(font2);
+        curentlyplaying_3->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 150);"));
+        curentlyplaying_4 = new QLabel(frame);
+        curentlyplaying_4->setObjectName("curentlyplaying_4");
+        curentlyplaying_4->setGeometry(QRect(10, 120, 231, 30));
+        curentlyplaying_4->setFont(font1);
+        curentlyplaying_4->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+        curentlyplaying_5 = new QLabel(frame);
+        curentlyplaying_5->setObjectName("curentlyplaying_5");
+        curentlyplaying_5->setGeometry(QRect(10, 150, 281, 30));
+        curentlyplaying_5->setFont(font2);
+        curentlyplaying_5->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 150);"));
         musicplayer->setCentralWidget(centralwidget);
 
         retranslateUi(musicplayer);
@@ -68,7 +104,12 @@ public:
     {
         musicplayer->setWindowTitle(QCoreApplication::translate("musicplayer", "Music Player", nullptr));
         backgroundimage->setText(QString());
-        label->setText(QString());
+        icon->setText(QString());
+        curentlyplaying->setText(QCoreApplication::translate("musicplayer", "Currently Playing", nullptr));
+        curentlyplaying_2->setText(QCoreApplication::translate("musicplayer", "Name", nullptr));
+        curentlyplaying_3->setText(QCoreApplication::translate("musicplayer", "Song name goes here", nullptr));
+        curentlyplaying_4->setText(QCoreApplication::translate("musicplayer", "Path", nullptr));
+        curentlyplaying_5->setText(QCoreApplication::translate("musicplayer", "Song path goes here", nullptr));
     } // retranslateUi
 
 };
