@@ -15,6 +15,7 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -27,10 +28,12 @@ public:
     QFrame *frame;
     QLabel *icon;
     QLabel *curentlyplaying;
-    QLabel *curentlyplaying_2;
-    QLabel *curentlyplaying_3;
-    QLabel *curentlyplaying_4;
-    QLabel *curentlyplaying_5;
+    QLabel *name;
+    QLabel *songname;
+    QLabel *path;
+    QLabel *songpath;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
 
     void setupUi(QMainWindow *musicplayer)
     {
@@ -70,29 +73,41 @@ public:
         font1.setBold(true);
         curentlyplaying->setFont(font1);
         curentlyplaying->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
-        curentlyplaying_2 = new QLabel(frame);
-        curentlyplaying_2->setObjectName("curentlyplaying_2");
-        curentlyplaying_2->setGeometry(QRect(10, 50, 231, 30));
-        curentlyplaying_2->setFont(font1);
-        curentlyplaying_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
-        curentlyplaying_3 = new QLabel(frame);
-        curentlyplaying_3->setObjectName("curentlyplaying_3");
-        curentlyplaying_3->setGeometry(QRect(10, 80, 281, 30));
+        name = new QLabel(frame);
+        name->setObjectName("name");
+        name->setGeometry(QRect(10, 50, 231, 30));
+        name->setFont(font1);
+        name->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+        songname = new QLabel(frame);
+        songname->setObjectName("songname");
+        songname->setGeometry(QRect(10, 80, 281, 30));
         QFont font2;
         font2.setPointSize(12);
         font2.setBold(true);
-        curentlyplaying_3->setFont(font2);
-        curentlyplaying_3->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 150);"));
-        curentlyplaying_4 = new QLabel(frame);
-        curentlyplaying_4->setObjectName("curentlyplaying_4");
-        curentlyplaying_4->setGeometry(QRect(10, 120, 231, 30));
-        curentlyplaying_4->setFont(font1);
-        curentlyplaying_4->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
-        curentlyplaying_5 = new QLabel(frame);
-        curentlyplaying_5->setObjectName("curentlyplaying_5");
-        curentlyplaying_5->setGeometry(QRect(10, 150, 281, 30));
-        curentlyplaying_5->setFont(font2);
-        curentlyplaying_5->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 150);"));
+        songname->setFont(font2);
+        songname->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 150);"));
+        path = new QLabel(frame);
+        path->setObjectName("path");
+        path->setGeometry(QRect(10, 120, 231, 30));
+        path->setFont(font1);
+        path->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+        songpath = new QLabel(frame);
+        songpath->setObjectName("songpath");
+        songpath->setGeometry(QRect(10, 150, 281, 30));
+        songpath->setFont(font2);
+        songpath->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 150);"));
+        pushButton = new QPushButton(frame);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(50, 200, 200, 36));
+        pushButton->setFont(font2);
+        pushButton->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 255);\n"
+"background-color: rgb(170, 0, 127);"));
+        pushButton_2 = new QPushButton(frame);
+        pushButton_2->setObjectName("pushButton_2");
+        pushButton_2->setGeometry(QRect(50, 250, 200, 36));
+        pushButton_2->setFont(font2);
+        pushButton_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 85, 127);"));
         musicplayer->setCentralWidget(centralwidget);
 
         retranslateUi(musicplayer);
@@ -106,10 +121,12 @@ public:
         backgroundimage->setText(QString());
         icon->setText(QString());
         curentlyplaying->setText(QCoreApplication::translate("musicplayer", "Currently Playing", nullptr));
-        curentlyplaying_2->setText(QCoreApplication::translate("musicplayer", "Name", nullptr));
-        curentlyplaying_3->setText(QCoreApplication::translate("musicplayer", "Song name goes here", nullptr));
-        curentlyplaying_4->setText(QCoreApplication::translate("musicplayer", "Path", nullptr));
-        curentlyplaying_5->setText(QCoreApplication::translate("musicplayer", "Song path goes here", nullptr));
+        name->setText(QCoreApplication::translate("musicplayer", "Name:", nullptr));
+        songname->setText(QCoreApplication::translate("musicplayer", "Song name goes here", nullptr));
+        path->setText(QCoreApplication::translate("musicplayer", "Path:", nullptr));
+        songpath->setText(QCoreApplication::translate("musicplayer", "Song path goes here", nullptr));
+        pushButton->setText(QCoreApplication::translate("musicplayer", "Add to Favorite", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("musicplayer", "Add to Playlist", nullptr));
     } // retranslateUi
 
 };
