@@ -104,8 +104,25 @@ compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_idk.cpp
 debug/qrc_idk.cpp: ../../idk.qrc \
 		C:/Qt/6.8.2/mingw_64/bin/rcc.exe \
+		../../icons/Play-32.png \
+		../../icons/Fast\ Backward-32.png \
+		../../icons/Fast\ Forward-32.png \
 		../../icons/music.png \
-		../../icons/music2.png
+		../../icons/music2.png \
+		../../icons/Repeat-32.png \
+		../../icons/Delete-16.png \
+		../../icons/Mute-32.png \
+		../../icons/Stop-32.png \
+		../../icons/Pause-32.png \
+		../../icons/Audio\ Wave-24.png \
+		../../icons/Play-16.png \
+		../../icons/Minus-16.png \
+		../../icons/Audio\ Wave-32.png \
+		../../icons/Stop\ Filled-32.png \
+		../../icons/Plus\ Math-16.png \
+		../../icons/Icon2.ico \
+		../../icons/Stop-24.png \
+		../../icons/Shuffle-32.png
 	C:\Qt\6.8.2\mingw_64\bin\rcc.exe -name idk --no-zstd ..\..\idk.qrc -o debug\qrc_idk.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h
@@ -729,11 +746,15 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		C:/Qt/6.8.2/mingw_64/include/QtGui/QIcon \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QMenuBar \
-		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qmenubar.h \
-		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qmenu.h \
-		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QStatusBar \
-		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qstatusbar.h \
+		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QFrame \
+		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qframe.h \
+		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Qt/6.8.2/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.8.2/mingw_64/include/QtGui/qtextdocument.h \
+		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\..\mainwindow.cpp
 

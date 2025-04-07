@@ -29,7 +29,6 @@ public:
     QLabel *icon;
     QLabel *motplayer;
     QPushButton *close;
-    QPushButton *maxi;
     QPushButton *mini;
 
     void setupUi(QMainWindow *musicplayer)
@@ -73,18 +72,15 @@ public:
         close = new QPushButton(titleframe);
         close->setObjectName("close");
         close->setGeometry(QRect(830, 5, 40, 30));
-        QIcon icon2(QIcon::fromTheme(QIcon::ThemeIcon::ApplicationExit));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/image/icons/Delete-16.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         close->setIcon(icon2);
-        maxi = new QPushButton(titleframe);
-        maxi->setObjectName("maxi");
-        maxi->setGeometry(QRect(785, 5, 40, 30));
-        QIcon icon3(QIcon::fromTheme(QString::fromUtf8("zoom-in")));
-        maxi->setIcon(icon3);
         mini = new QPushButton(titleframe);
         mini->setObjectName("mini");
-        mini->setGeometry(QRect(740, 5, 40, 30));
-        QIcon icon4(QIcon::fromTheme(QString::fromUtf8("zoom-out")));
-        mini->setIcon(icon4);
+        mini->setGeometry(QRect(785, 5, 40, 30));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/image/icons/Minus-16.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        mini->setIcon(icon3);
         musicplayer->setCentralWidget(centralwidget);
 
         retranslateUi(musicplayer);
@@ -99,7 +95,6 @@ public:
         icon->setText(QString());
         motplayer->setText(QCoreApplication::translate("musicplayer", "Mot Player", nullptr));
         close->setText(QString());
-        maxi->setText(QString());
         mini->setText(QString());
     } // retranslateUi
 

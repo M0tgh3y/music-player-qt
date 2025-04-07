@@ -33,7 +33,8 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(17, 47, 76);</string>
+     <string notr="true">background-color: rgb(17, 47, 76);
+</string>
     </property>
     <property name="text">
      <string/>
@@ -132,6 +133,26 @@ color: rgb(85, 170, 255);</string>
        <normaloff>:/image/icons/Minus-16.png</normaloff>:/image/icons/Minus-16.png</iconset>
      </property>
     </widget>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>250</width>
+      <height>250</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 150);
+border-radius: 10px;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
    </widget>
   </widget>
  </widget>
