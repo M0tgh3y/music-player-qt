@@ -33,20 +33,25 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(17, 47, 76);</string>
+     <string notr="true">background-color: rgb(255, 170, 255);
+</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QFrame" name="titleframe">
+   <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>880</width>
-      <height>40</height>
+      <x>20</x>
+      <y>20</y>
+      <width>300</width>
+      <height>250</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 255);
+border-radius: 10px;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>
@@ -54,82 +59,23 @@
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QLabel" name="icon">
+    <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>5</x>
-       <y>0</y>
-       <width>40</width>
-       <height>40</height>
+       <x>10</x>
+       <y>10</y>
+       <width>30</width>
+       <height>30</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
      </property>
      <property name="text">
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="idk.qrc">:/image/icons/music.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="motplayer">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>0</y>
-       <width>151</width>
-       <height>40</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 16pt &quot;Arial&quot;;
-color: rgb(85, 170, 255);</string>
-     </property>
-     <property name="text">
-      <string>Mot Player</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="close">
-     <property name="geometry">
-      <rect>
-       <x>830</x>
-       <y>5</y>
-       <width>40</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="idk.qrc">
-       <normaloff>:/image/icons/Delete-16.png</normaloff>:/image/icons/Delete-16.png</iconset>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="mini">
-     <property name="geometry">
-      <rect>
-       <x>785</x>
-       <y>5</y>
-       <width>40</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="idk.qrc">
-       <normaloff>:/image/icons/Minus-16.png</normaloff>:/image/icons/Minus-16.png</iconset>
+      <pixmap resource="idk.qrc">:/image/icons/Audio Wave-32.png</pixmap>
      </property>
     </widget>
    </widget>
