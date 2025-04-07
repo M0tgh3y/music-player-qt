@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QDial>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -32,8 +33,10 @@ public:
     QLabel *songname;
     QLabel *path;
     QLabel *songpath;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *addtofav;
+    QPushButton *addtoplay;
+    QDial *volume;
+    QLabel *label;
 
     void setupUi(QMainWindow *musicplayer)
     {
@@ -96,18 +99,34 @@ public:
         songpath->setGeometry(QRect(10, 150, 281, 30));
         songpath->setFont(font2);
         songpath->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 150);"));
-        pushButton = new QPushButton(frame);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(50, 200, 200, 36));
-        pushButton->setFont(font2);
-        pushButton->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 255);\n"
+        addtofav = new QPushButton(frame);
+        addtofav->setObjectName("addtofav");
+        addtofav->setGeometry(QRect(50, 200, 200, 36));
+        addtofav->setFont(font2);
+        addtofav->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 255);\n"
 "background-color: rgb(170, 0, 127);"));
-        pushButton_2 = new QPushButton(frame);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(50, 250, 200, 36));
-        pushButton_2->setFont(font2);
-        pushButton_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+        addtofav->setIcon(icon1);
+        addtoplay = new QPushButton(frame);
+        addtoplay->setObjectName("addtoplay");
+        addtoplay->setGeometry(QRect(50, 250, 200, 36));
+        addtoplay->setFont(font2);
+        addtoplay->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 85, 127);"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/image/icons/Audio Wave-24.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        addtoplay->setIcon(icon2);
+        volume = new QDial(centralwidget);
+        volume->setObjectName("volume");
+        volume->setGeometry(QRect(95, 340, 150, 150));
+        volume->setMinimum(0);
+        volume->setMaximum(100);
+        volume->setSingleStep(1);
+        volume->setPageStep(10);
+        volume->setValue(50);
+        volume->setNotchesVisible(true);
+        label = new QLabel(centralwidget);
+        label->setObjectName("label");
+        label->setGeometry(QRect(160, 410, 20, 20));
         musicplayer->setCentralWidget(centralwidget);
 
         retranslateUi(musicplayer);
@@ -125,8 +144,9 @@ public:
         songname->setText(QCoreApplication::translate("musicplayer", "Song name goes here", nullptr));
         path->setText(QCoreApplication::translate("musicplayer", "Path:", nullptr));
         songpath->setText(QCoreApplication::translate("musicplayer", "Song path goes here", nullptr));
-        pushButton->setText(QCoreApplication::translate("musicplayer", "Add to Favorite", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("musicplayer", "Add to Playlist", nullptr));
+        addtofav->setText(QCoreApplication::translate("musicplayer", "Add to Favorites", nullptr));
+        addtoplay->setText(QCoreApplication::translate("musicplayer", "Add to Playlist", nullptr));
+        label->setText(QCoreApplication::translate("musicplayer", "50", nullptr));
     } // retranslateUi
 
 };

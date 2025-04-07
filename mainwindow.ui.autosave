@@ -271,17 +271,26 @@ background-color: rgb(255, 85, 127);</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="voltext">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>410</y>
-      <width>20</width>
-      <height>20</height>
+      <x>155</x>
+      <y>400</y>
+      <width>30</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>50</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
   </widget>
