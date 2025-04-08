@@ -15,9 +15,11 @@
 #include <QtWidgets/QDial>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -48,6 +50,14 @@ public:
     QPushButton *repeat;
     QSlider *slider;
     QLabel *time;
+    QStackedWidget *songs;
+    QWidget *page;
+    QLabel *songlist;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QListView *listView;
+    QWidget *page_2;
 
     void setupUi(QMainWindow *musicplayer)
     {
@@ -81,7 +91,7 @@ public:
         icon->setPixmap(QPixmap(QString::fromUtf8(":/image/icons/Audio Wave-32.png")));
         curentlyplaying = new QLabel(detail);
         curentlyplaying->setObjectName("curentlyplaying");
-        curentlyplaying->setGeometry(QRect(50, 10, 231, 30));
+        curentlyplaying->setGeometry(QRect(50, 10, 230, 30));
         QFont font1;
         font1.setPointSize(14);
         font1.setBold(true);
@@ -152,7 +162,7 @@ public:
         songline->setFrameShadow(QFrame::Shadow::Raised);
         things = new QFrame(songline);
         things->setObjectName("things");
-        things->setGeometry(QRect(0, 0, 280, 50));
+        things->setGeometry(QRect(0, 0, 300, 50));
         things->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 0, 127);\n"
 "border-radius: 10px;\n"
 ""));
@@ -160,54 +170,58 @@ public:
         things->setFrameShadow(QFrame::Shadow::Raised);
         play = new QPushButton(things);
         play->setObjectName("play");
-        play->setGeometry(QRect(25, 10, 30, 30));
+        play->setGeometry(QRect(20, 10, 30, 30));
         play->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         QIcon icon3(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart));
         play->setIcon(icon3);
         pause = new QPushButton(things);
         pause->setObjectName("pause");
-        pause->setGeometry(QRect(65, 10, 30, 30));
+        pause->setGeometry(QRect(66, 10, 30, 30));
         pause->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         QIcon icon4(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackPause));
         pause->setIcon(icon4);
         stop = new QPushButton(things);
         stop->setObjectName("stop");
-        stop->setGeometry(QRect(105, 10, 30, 30));
+        stop->setGeometry(QRect(112, 10, 30, 30));
         stop->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         QIcon icon5(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStop));
         stop->setIcon(icon5);
         last = new QPushButton(things);
         last->setObjectName("last");
-        last->setGeometry(QRect(145, 10, 30, 30));
+        last->setGeometry(QRect(158, 10, 30, 30));
         last->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         QIcon icon6(QIcon::fromTheme(QIcon::ThemeIcon::MediaSeekBackward));
         last->setIcon(icon6);
         next = new QPushButton(things);
         next->setObjectName("next");
-        next->setGeometry(QRect(185, 10, 30, 30));
+        next->setGeometry(QRect(204, 10, 30, 30));
         next->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         QIcon icon7(QIcon::fromTheme(QIcon::ThemeIcon::MediaSeekForward));
         next->setIcon(icon7);
         repeat = new QPushButton(things);
         repeat->setObjectName("repeat");
-        repeat->setGeometry(QRect(225, 10, 30, 30));
+        repeat->setGeometry(QRect(250, 10, 30, 30));
         repeat->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         QIcon icon8(QIcon::fromTheme(QIcon::ThemeIcon::SyncSynchronizing));
         repeat->setIcon(icon8);
         slider = new QSlider(songline);
         slider->setObjectName("slider");
-        slider->setGeometry(QRect(310, 15, 320, 20));
+        slider->setGeometry(QRect(325, 15, 300, 20));
+        slider->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         slider->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal{\n"
-"	border: 1px solid #999999;\n"
-"	height: 16px;\n"
-"	padding: 3px;\n"
-"	background: rgb(0, 170, 0);\n"
-"	margin: 2px;\n"
-"	border-radius: 10px;\n"
-"	\n"
+"height: 20px;\n"
 "\n"
+"background: rgb(74, 170, 29);\n"
+"\n"
+"border-radius: 10px;\n"
 "}\n"
-""));
+"\n"
+"QSlider::handle:horizontal{\n"
+"background: rgb(85, 170, 255);\n"
+"width: 20px;\n"
+"border-radius: 10px;\n"
+"\n"
+"}"));
         slider->setOrientation(Qt::Orientation::Horizontal);
         time = new QLabel(songline);
         time->setObjectName("time");
@@ -215,6 +229,52 @@ public:
         time->setFont(font2);
         time->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
         time->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        time->setWordWrap(false);
+        songs = new QStackedWidget(centralwidget);
+        songs->setObjectName("songs");
+        songs->setGeometry(QRect(340, 20, 520, 350));
+        songs->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 85, 127, 50);\n"
+"border-radius: 10px;"));
+        page = new QWidget();
+        page->setObjectName("page");
+        songlist = new QLabel(page);
+        songlist->setObjectName("songlist");
+        songlist->setGeometry(QRect(10, 10, 110, 30));
+        songlist->setFont(font1);
+        songlist->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"background-color: rgba(255, 255, 255, 0);"));
+        songlist->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        pushButton = new QPushButton(page);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(470, 10, 40, 40));
+        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 127);\n"
+"color: rgb(0, 0, 0);"));
+        QIcon icon9(QIcon::fromTheme(QIcon::ThemeIcon::FolderNew));
+        pushButton->setIcon(icon9);
+        pushButton->setIconSize(QSize(30, 30));
+        pushButton_2 = new QPushButton(page);
+        pushButton_2->setObjectName("pushButton_2");
+        pushButton_2->setGeometry(QRect(420, 10, 40, 40));
+        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 127);\n"
+"color: rgb(0, 0, 0);"));
+        QIcon icon10(QIcon::fromTheme(QIcon::ThemeIcon::EditDelete));
+        pushButton_2->setIcon(icon10);
+        pushButton_2->setIconSize(QSize(30, 30));
+        pushButton_3 = new QPushButton(page);
+        pushButton_3->setObjectName("pushButton_3");
+        pushButton_3->setGeometry(QRect(370, 10, 40, 40));
+        pushButton_3->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 127);\n"
+"color: rgb(0, 0, 0);"));
+        QIcon icon11(QIcon::fromTheme(QIcon::ThemeIcon::FolderOpen));
+        pushButton_3->setIcon(icon11);
+        pushButton_3->setIconSize(QSize(30, 30));
+        listView = new QListView(page);
+        listView->setObjectName("listView");
+        listView->setGeometry(QRect(10, 60, 500, 280));
+        songs->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName("page_2");
+        songs->addWidget(page_2);
         musicplayer->setCentralWidget(centralwidget);
 
         retranslateUi(musicplayer);
@@ -242,6 +302,10 @@ public:
         next->setText(QString());
         repeat->setText(QString());
         time->setText(QCoreApplication::translate("musicplayer", "00:00:00 / 00:00:00", nullptr));
+        songlist->setText(QCoreApplication::translate("musicplayer", "Song List", nullptr));
+        pushButton->setText(QString());
+        pushButton_2->setText(QString());
+        pushButton_3->setText(QString());
     } // retranslateUi
 
 };
