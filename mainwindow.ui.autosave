@@ -382,7 +382,7 @@ border-radius: 10px;
      <widget class="QPushButton" name="stop">
       <property name="geometry">
        <rect>
-        <x>82</x>
+        <x>112</x>
         <y>10</y>
         <width>30</width>
         <height>30</height>
@@ -401,7 +401,7 @@ border-radius: 10px;
      <widget class="QPushButton" name="last">
       <property name="geometry">
        <rect>
-        <x>145</x>
+        <x>158</x>
         <y>10</y>
         <width>30</width>
         <height>30</height>
@@ -420,7 +420,7 @@ border-radius: 10px;
      <widget class="QPushButton" name="next">
       <property name="geometry">
        <rect>
-        <x>185</x>
+        <x>204</x>
         <y>10</y>
         <width>30</width>
         <height>30</height>
@@ -439,7 +439,7 @@ border-radius: 10px;
      <widget class="QPushButton" name="repeat">
       <property name="geometry">
        <rect>
-        <x>235</x>
+        <x>250</x>
         <y>10</y>
         <width>30</width>
         <height>30</height>
@@ -459,24 +459,20 @@ border-radius: 10px;
     <widget class="QSlider" name="slider">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>325</x>
        <y>15</y>
-       <width>320</width>
+       <width>300</width>
        <height>20</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">QSlider::groove:horizontal{
-	border: 1px solid #999999;
-	height: 16px;
-	padding: 3px;
-	background: rgb(0, 170, 0);
-	margin: 2px;
-	border-radius: 10px;
-	
+height: 20px;
 
-}
-</string>
+background: rgb(74, 170, 29);
+
+border-radius: 10px;
+}</string>
      </property>
      <property name="orientation">
       <enum>Qt::Orientation::Horizontal</enum>
@@ -505,6 +501,9 @@ border-radius: 10px;
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>false</bool>
      </property>
     </widget>
    </widget>
