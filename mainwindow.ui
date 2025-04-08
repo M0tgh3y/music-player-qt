@@ -77,6 +77,9 @@ border-radius: 10px;</string>
      <property name="pixmap">
       <pixmap resource="idk.qrc">:/image/icons/Audio Wave-32.png</pixmap>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
     </widget>
     <widget class="QLabel" name="curentlyplaying">
      <property name="geometry">
@@ -359,6 +362,12 @@ border-radius: 10px;
       <property name="icon">
        <iconset theme="QIcon::ThemeIcon::MediaPlaybackStart"/>
       </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
      </widget>
      <widget class="QPushButton" name="pause">
       <property name="geometry">
@@ -377,6 +386,12 @@ border-radius: 10px;
       </property>
       <property name="icon">
        <iconset theme="QIcon::ThemeIcon::MediaPlaybackPause"/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
       </property>
      </widget>
      <widget class="QPushButton" name="stop">
@@ -397,6 +412,12 @@ border-radius: 10px;
       <property name="icon">
        <iconset theme="QIcon::ThemeIcon::MediaPlaybackStop"/>
       </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
      </widget>
      <widget class="QPushButton" name="last">
       <property name="geometry">
@@ -415,6 +436,12 @@ border-radius: 10px;
       </property>
       <property name="icon">
        <iconset theme="QIcon::ThemeIcon::MediaSeekBackward"/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
       </property>
      </widget>
      <widget class="QPushButton" name="next">
@@ -435,6 +462,12 @@ border-radius: 10px;
       <property name="icon">
        <iconset theme="QIcon::ThemeIcon::MediaSeekForward"/>
       </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
      </widget>
      <widget class="QPushButton" name="repeat">
       <property name="geometry">
@@ -453,6 +486,12 @@ border-radius: 10px;
       </property>
       <property name="icon">
        <iconset theme="QIcon::ThemeIcon::SyncSynchronizing"/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
       </property>
      </widget>
     </widget>
@@ -536,13 +575,13 @@ border-radius: 10px;</string>
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>110</width>
-        <height>30</height>
+        <width>130</width>
+        <height>40</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>18</pointsize>
         <bold>true</bold>
        </font>
       </property>
@@ -565,6 +604,9 @@ background-color: rgba(255, 255, 255, 0);</string>
         <width>40</width>
         <height>40</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 0, 127);
@@ -592,6 +634,9 @@ color: rgb(0, 0, 0);</string>
         <height>40</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 0, 127);
 color: rgb(0, 0, 0);</string>
@@ -618,6 +663,9 @@ color: rgb(0, 0, 0);</string>
         <height>40</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 0, 127);
 color: rgb(0, 0, 0);</string>
@@ -635,7 +683,7 @@ color: rgb(0, 0, 0);</string>
        </size>
       </property>
      </widget>
-     <widget class="QListView" name="listView">
+     <widget class="QListWidget" name="listWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -644,6 +692,31 @@ color: rgb(0, 0, 0);</string>
         <height>280</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(0, 0, 0, 150);
+background-color: rgba(255, 85, 127, 100);
+padding: 10px;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>song 1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>song 2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>song 3</string>
+       </property>
+      </item>
      </widget>
     </widget>
     <widget class="QWidget" name="page_2"/>
