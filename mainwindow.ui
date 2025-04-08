@@ -511,13 +511,13 @@ border-radius: 10px;
       <string notr="true">QSlider::groove:horizontal{
 height: 20px;
 
-background: rgb(74, 170, 29);
+background: rgb(170, 0, 255);
 
 border-radius: 10px;
 }
 
 QSlider::handle:horizontal{
-background: rgb(85, 170, 255);
+background: rgb(85, 0, 127);
 width: 20px;
 border-radius: 10px;
 
