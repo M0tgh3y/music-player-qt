@@ -53,11 +53,15 @@ public:
     QStackedWidget *songs;
     QWidget *page;
     QLabel *songlist;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QPushButton *adds;
+    QPushButton *delet;
+    QPushButton *findmu;
     QListWidget *listWidget;
-    QWidget *page_2;
+    QWidget *list;
+    QFrame *frame;
+    QPushButton *songlistbtn;
+    QPushButton *playlist;
+    QPushButton *favo;
 
     void setupUi(QMainWindow *musicplayer)
     {
@@ -254,33 +258,33 @@ public:
         songlist->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
 "background-color: rgba(255, 255, 255, 0);"));
         songlist->setAlignment(Qt::AlignmentFlag::AlignCenter);
-        pushButton = new QPushButton(page);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(470, 10, 40, 40));
-        pushButton->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
-        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 127);\n"
+        adds = new QPushButton(page);
+        adds->setObjectName("adds");
+        adds->setGeometry(QRect(470, 10, 40, 40));
+        adds->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        adds->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 127);\n"
 "color: rgb(0, 0, 0);"));
         QIcon icon9(QIcon::fromTheme(QIcon::ThemeIcon::FolderNew));
-        pushButton->setIcon(icon9);
-        pushButton->setIconSize(QSize(30, 30));
-        pushButton_2 = new QPushButton(page);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(420, 10, 40, 40));
-        pushButton_2->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
-        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 127);\n"
+        adds->setIcon(icon9);
+        adds->setIconSize(QSize(30, 30));
+        delet = new QPushButton(page);
+        delet->setObjectName("delet");
+        delet->setGeometry(QRect(420, 10, 40, 40));
+        delet->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        delet->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 127);\n"
 "color: rgb(0, 0, 0);"));
         QIcon icon10(QIcon::fromTheme(QIcon::ThemeIcon::EditDelete));
-        pushButton_2->setIcon(icon10);
-        pushButton_2->setIconSize(QSize(30, 30));
-        pushButton_3 = new QPushButton(page);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(370, 10, 40, 40));
-        pushButton_3->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
-        pushButton_3->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 127);\n"
+        delet->setIcon(icon10);
+        delet->setIconSize(QSize(30, 30));
+        findmu = new QPushButton(page);
+        findmu->setObjectName("findmu");
+        findmu->setGeometry(QRect(370, 10, 40, 40));
+        findmu->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        findmu->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 127);\n"
 "color: rgb(0, 0, 0);"));
         QIcon icon11(QIcon::fromTheme(QIcon::ThemeIcon::FolderOpen));
-        pushButton_3->setIcon(icon11);
-        pushButton_3->setIconSize(QSize(30, 30));
+        findmu->setIcon(icon11);
+        findmu->setIconSize(QSize(30, 30));
         listWidget = new QListWidget(page);
         new QListWidgetItem(listWidget);
         new QListWidgetItem(listWidget);
@@ -292,11 +296,30 @@ public:
         listWidget->setFont(font4);
         listWidget->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 150);\n"
 "background-color: rgba(255, 85, 127, 100);\n"
+"selection-background-color: rgb(255, 140, 64);\n"
+"selection-color: rgb(255, 255, 255);\n"
 "padding: 10px;"));
         songs->addWidget(page);
-        page_2 = new QWidget();
-        page_2->setObjectName("page_2");
-        songs->addWidget(page_2);
+        list = new QWidget();
+        list->setObjectName("list");
+        songs->addWidget(list);
+        frame = new QFrame(centralwidget);
+        frame->setObjectName("frame");
+        frame->setGeometry(QRect(340, 390, 520, 60));
+        frame->setFrameShape(QFrame::Shape::StyledPanel);
+        frame->setFrameShadow(QFrame::Shadow::Raised);
+        songlistbtn = new QPushButton(frame);
+        songlistbtn->setObjectName("songlistbtn");
+        songlistbtn->setGeometry(QRect(25, 15, 140, 30));
+        songlistbtn->setFont(font2);
+        playlist = new QPushButton(frame);
+        playlist->setObjectName("playlist");
+        playlist->setGeometry(QRect(190, 15, 140, 30));
+        playlist->setFont(font2);
+        favo = new QPushButton(frame);
+        favo->setObjectName("favo");
+        favo->setGeometry(QRect(350, 15, 140, 30));
+        favo->setFont(font2);
         musicplayer->setCentralWidget(centralwidget);
 
         retranslateUi(musicplayer);
@@ -325,9 +348,9 @@ public:
         repeat->setText(QString());
         time->setText(QCoreApplication::translate("musicplayer", "00:00:00 / 00:00:00", nullptr));
         songlist->setText(QCoreApplication::translate("musicplayer", "Song List", nullptr));
-        pushButton->setText(QString());
-        pushButton_2->setText(QString());
-        pushButton_3->setText(QString());
+        adds->setText(QString());
+        delet->setText(QString());
+        findmu->setText(QString());
 
         const bool __sortingEnabled = listWidget->isSortingEnabled();
         listWidget->setSortingEnabled(false);
@@ -339,6 +362,9 @@ public:
         ___qlistwidgetitem2->setText(QCoreApplication::translate("musicplayer", "song 3", nullptr));
         listWidget->setSortingEnabled(__sortingEnabled);
 
+        songlistbtn->setText(QCoreApplication::translate("musicplayer", "Song List", nullptr));
+        playlist->setText(QCoreApplication::translate("musicplayer", "Playlists", nullptr));
+        favo->setText(QCoreApplication::translate("musicplayer", "Favorites", nullptr));
     } // retranslateUi
 
 };

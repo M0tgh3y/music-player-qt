@@ -596,7 +596,7 @@ background-color: rgba(255, 255, 255, 0);</string>
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="adds">
       <property name="geometry">
        <rect>
         <x>470</x>
@@ -625,7 +625,7 @@ color: rgb(0, 0, 0);</string>
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="delet">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -654,7 +654,7 @@ color: rgb(0, 0, 0);</string>
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="findmu">
       <property name="geometry">
        <rect>
         <x>370</x>
@@ -700,6 +700,8 @@ color: rgb(0, 0, 0);</string>
       <property name="styleSheet">
        <string notr="true">color: rgba(0, 0, 0, 150);
 background-color: rgba(255, 85, 127, 100);
+selection-background-color: rgb(255, 140, 64);
+selection-color: rgb(255, 255, 255);
 padding: 10px;</string>
       </property>
       <item>
@@ -719,7 +721,80 @@ padding: 10px;</string>
       </item>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_2"/>
+    <widget class="QWidget" name="list"/>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>390</y>
+      <width>520</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="songlistbtn">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>15</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Song List</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="playlist">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>15</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Playlists</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="favo">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>15</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Favorites</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
