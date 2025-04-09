@@ -727,10 +727,14 @@ padding: 10px;</string>
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>390</y>
+      <y>380</y>
       <width>520</width>
-      <height>60</height>
+      <height>80</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 170, 255);
+border: none;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>
@@ -741,10 +745,10 @@ padding: 10px;</string>
     <widget class="QPushButton" name="songlistbtn">
      <property name="geometry">
       <rect>
-       <x>25</x>
-       <y>15</y>
-       <width>140</width>
-       <height>30</height>
+       <x>0</x>
+       <y>20</y>
+       <width>160</width>
+       <height>40</height>
       </rect>
      </property>
      <property name="font">
@@ -752,6 +756,14 @@ padding: 10px;</string>
        <pointsize>12</pointsize>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(85, 255, 127);
+border-radius: 10px;</string>
      </property>
      <property name="text">
       <string>Song List</string>
@@ -760,10 +772,10 @@ padding: 10px;</string>
     <widget class="QPushButton" name="playlist">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>15</y>
-       <width>140</width>
-       <height>30</height>
+       <x>180</x>
+       <y>20</y>
+       <width>160</width>
+       <height>40</height>
       </rect>
      </property>
      <property name="font">
@@ -771,6 +783,14 @@ padding: 10px;</string>
        <pointsize>12</pointsize>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(85, 255, 127);
+border-radius: 10px;</string>
      </property>
      <property name="text">
       <string>Playlists</string>
@@ -779,10 +799,10 @@ padding: 10px;</string>
     <widget class="QPushButton" name="favo">
      <property name="geometry">
       <rect>
-       <x>350</x>
-       <y>15</y>
-       <width>140</width>
-       <height>30</height>
+       <x>360</x>
+       <y>20</y>
+       <width>160</width>
+       <height>40</height>
       </rect>
      </property>
      <property name="font">
@@ -790,6 +810,14 @@ padding: 10px;</string>
        <pointsize>12</pointsize>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(85, 255, 127);
+border-radius: 10px;</string>
      </property>
      <property name="text">
       <string>Favorites</string>

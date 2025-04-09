@@ -305,21 +305,35 @@ public:
         songs->addWidget(list);
         frame = new QFrame(centralwidget);
         frame->setObjectName("frame");
-        frame->setGeometry(QRect(340, 390, 520, 60));
+        frame->setGeometry(QRect(340, 380, 520, 80));
+        frame->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 170, 255);\n"
+"border: none;"));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);
         songlistbtn = new QPushButton(frame);
         songlistbtn->setObjectName("songlistbtn");
-        songlistbtn->setGeometry(QRect(25, 15, 140, 30));
+        songlistbtn->setGeometry(QRect(0, 20, 160, 40));
         songlistbtn->setFont(font2);
+        songlistbtn->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        songlistbtn->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"background-color: rgb(85, 255, 127);\n"
+"border-radius: 10px;"));
         playlist = new QPushButton(frame);
         playlist->setObjectName("playlist");
-        playlist->setGeometry(QRect(190, 15, 140, 30));
+        playlist->setGeometry(QRect(180, 20, 160, 40));
         playlist->setFont(font2);
+        playlist->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        playlist->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"background-color: rgb(85, 255, 127);\n"
+"border-radius: 10px;"));
         favo = new QPushButton(frame);
         favo->setObjectName("favo");
-        favo->setGeometry(QRect(350, 15, 140, 30));
+        favo->setGeometry(QRect(360, 20, 160, 40));
         favo->setFont(font2);
+        favo->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        favo->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"background-color: rgb(85, 255, 127);\n"
+"border-radius: 10px;"));
         musicplayer->setCentralWidget(centralwidget);
 
         retranslateUi(musicplayer);
