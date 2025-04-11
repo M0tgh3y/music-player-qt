@@ -17,6 +17,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_adds_clicked();
+
 private:
     Ui::musicplayer *ui;
 };

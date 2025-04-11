@@ -56,7 +56,7 @@ public:
     QPushButton *adds;
     QPushButton *delet;
     QPushButton *findmu;
-    QListWidget *listWidget;
+    QListWidget *songlist2;
     QWidget *list;
     QFrame *frame;
     QPushButton *songlistbtn;
@@ -285,16 +285,16 @@ public:
         QIcon icon11(QIcon::fromTheme(QIcon::ThemeIcon::FolderOpen));
         findmu->setIcon(icon11);
         findmu->setIconSize(QSize(30, 30));
-        listWidget = new QListWidget(page);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        listWidget->setObjectName("listWidget");
-        listWidget->setGeometry(QRect(10, 60, 500, 280));
+        songlist2 = new QListWidget(page);
+        new QListWidgetItem(songlist2);
+        new QListWidgetItem(songlist2);
+        new QListWidgetItem(songlist2);
+        songlist2->setObjectName("songlist2");
+        songlist2->setGeometry(QRect(10, 60, 500, 280));
         QFont font4;
         font4.setPointSize(14);
-        listWidget->setFont(font4);
-        listWidget->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 150);\n"
+        songlist2->setFont(font4);
+        songlist2->setStyleSheet(QString::fromUtf8("color: rgba(0, 0, 0, 150);\n"
 "background-color: rgba(255, 85, 127, 100);\n"
 "selection-background-color: rgb(255, 140, 64);\n"
 "selection-color: rgb(255, 255, 255);\n"
@@ -316,15 +316,18 @@ public:
         songlistbtn->setFont(font2);
         songlistbtn->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         songlistbtn->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
-"background-color: rgb(85, 255, 127);\n"
+"background-color: #D6745D;\n"
 "border-radius: 10px;"));
+        QIcon icon12(QIcon::fromTheme(QIcon::ThemeIcon::DocumentPageSetup));
+        songlistbtn->setIcon(icon12);
+        songlistbtn->setIconSize(QSize(20, 20));
         playlist = new QPushButton(frame);
         playlist->setObjectName("playlist");
         playlist->setGeometry(QRect(180, 20, 160, 40));
         playlist->setFont(font2);
         playlist->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         playlist->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
-"background-color: rgb(85, 255, 127);\n"
+"background-color: #014C8F;\n"
 "border-radius: 10px;"));
         favo = new QPushButton(frame);
         favo->setObjectName("favo");
@@ -366,17 +369,17 @@ public:
         delet->setText(QString());
         findmu->setText(QString());
 
-        const bool __sortingEnabled = listWidget->isSortingEnabled();
-        listWidget->setSortingEnabled(false);
-        QListWidgetItem *___qlistwidgetitem = listWidget->item(0);
+        const bool __sortingEnabled = songlist2->isSortingEnabled();
+        songlist2->setSortingEnabled(false);
+        QListWidgetItem *___qlistwidgetitem = songlist2->item(0);
         ___qlistwidgetitem->setText(QCoreApplication::translate("musicplayer", "song 1", nullptr));
-        QListWidgetItem *___qlistwidgetitem1 = listWidget->item(1);
+        QListWidgetItem *___qlistwidgetitem1 = songlist2->item(1);
         ___qlistwidgetitem1->setText(QCoreApplication::translate("musicplayer", "song 2", nullptr));
-        QListWidgetItem *___qlistwidgetitem2 = listWidget->item(2);
+        QListWidgetItem *___qlistwidgetitem2 = songlist2->item(2);
         ___qlistwidgetitem2->setText(QCoreApplication::translate("musicplayer", "song 3", nullptr));
-        listWidget->setSortingEnabled(__sortingEnabled);
+        songlist2->setSortingEnabled(__sortingEnabled);
 
-        songlistbtn->setText(QCoreApplication::translate("musicplayer", "Song List", nullptr));
+        songlistbtn->setText(QCoreApplication::translate("musicplayer", " Song List", nullptr));
         playlist->setText(QCoreApplication::translate("musicplayer", "Playlists", nullptr));
         favo->setText(QCoreApplication::translate("musicplayer", "Favorites", nullptr));
     } // retranslateUi
