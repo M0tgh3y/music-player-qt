@@ -286,9 +286,6 @@ public:
         findmu->setIcon(icon11);
         findmu->setIconSize(QSize(30, 30));
         songlist2 = new QListWidget(page);
-        new QListWidgetItem(songlist2);
-        new QListWidgetItem(songlist2);
-        new QListWidgetItem(songlist2);
         songlist2->setObjectName("songlist2");
         songlist2->setGeometry(QRect(10, 60, 500, 280));
         QFont font4;
@@ -368,17 +365,6 @@ public:
         adds->setText(QString());
         delet->setText(QString());
         findmu->setText(QString());
-
-        const bool __sortingEnabled = songlist2->isSortingEnabled();
-        songlist2->setSortingEnabled(false);
-        QListWidgetItem *___qlistwidgetitem = songlist2->item(0);
-        ___qlistwidgetitem->setText(QCoreApplication::translate("musicplayer", "song 1", nullptr));
-        QListWidgetItem *___qlistwidgetitem1 = songlist2->item(1);
-        ___qlistwidgetitem1->setText(QCoreApplication::translate("musicplayer", "song 2", nullptr));
-        QListWidgetItem *___qlistwidgetitem2 = songlist2->item(2);
-        ___qlistwidgetitem2->setText(QCoreApplication::translate("musicplayer", "song 3", nullptr));
-        songlist2->setSortingEnabled(__sortingEnabled);
-
         songlistbtn->setText(QCoreApplication::translate("musicplayer", " Song List", nullptr));
         playlist->setText(QCoreApplication::translate("musicplayer", "Playlists", nullptr));
         favo->setText(QCoreApplication::translate("musicplayer", "Favorites", nullptr));

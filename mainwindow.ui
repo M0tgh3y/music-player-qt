@@ -704,21 +704,6 @@ selection-background-color: rgb(255, 140, 64);
 selection-color: rgb(255, 255, 255);
 padding: 10px;</string>
       </property>
-      <item>
-       <property name="text">
-        <string>song 1</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>song 2</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>song 3</string>
-       </property>
-      </item>
      </widget>
     </widget>
     <widget class="QWidget" name="list"/>

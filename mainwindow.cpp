@@ -8,6 +8,19 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::musicplayer)
 {
     ui->setupUi(this);
+
+    QFile loadFile("songs.txt");
+    if (loadFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&loadFile);
+        while (!in.atEnd()) {
+            QString filePath = in.readLine().trimmed();
+            if (!filePath.isEmpty()) {
+                QFileInfo fileInfo(filePath);
+                ui->songlist2->addItem(fileInfo.fileName());
+            }
+        }
+        loadFile.close();
+    }
 }
 
 MainWindow::~MainWindow()
@@ -25,8 +38,16 @@ void MainWindow::on_adds_clicked()
 
     if (!filePath.isEmpty()) {
         QFileInfo fileInfo(filePath);
-        ui->songlist2->addItem(fileInfo.fileName()); // just filename
-        // ui->listWidget->addItem(filePath); // if you prefer full path
+        ui->songlist2->addItem(fileInfo.fileName());
+
+        // Save the full path to a file
+        QFile saveFile("songs.txt");
+        if (saveFile.open(QIODevice::Append | QIODevice::Text)) {
+            QTextStream out(&saveFile);
+            out << filePath << "\n";
+            saveFile.close();
+        }
     }
 }
+
 
