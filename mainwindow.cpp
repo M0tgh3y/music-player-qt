@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent)
         }
         loadFile.close();
     }
+
+    connect(ui->songlist2, &QListWidget::itemClicked, this, &MainWindow::onSongSelected);
 }
 
 MainWindow::~MainWindow()
@@ -49,5 +51,13 @@ void MainWindow::on_adds_clicked()
         }
     }
 }
+
+void MainWindow::onSongSelected(QListWidgetItem *item)
+{
+    ui->curentlyplaying->setText(item->text());
+    ui->songname->setText(item->text());
+}
+
+
 
 

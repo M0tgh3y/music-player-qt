@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QListWidgetItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,6 +20,7 @@ public:
 
 private slots:
     void on_adds_clicked();
+    void onSongSelected(QListWidgetItem *item);
 
 private:
     Ui::musicplayer *ui;
