@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QFileDialog>
 #include <QFileInfo>
+#include <QMediaPlayer>
+#include <QUrl>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,6 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Initialize player
+    player = new QMediaPlayer(this);
+
+    // Load songs from file
     QFile loadFile("songs.txt");
     if (loadFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream in(&loadFile);
@@ -16,7 +22,9 @@ MainWindow::MainWindow(QWidget *parent)
             QString filePath = in.readLine().trimmed();
             if (!filePath.isEmpty()) {
                 QFileInfo fileInfo(filePath);
-                ui->songlist2->addItem(fileInfo.fileName());
+                QString fileName = fileInfo.fileName();
+                ui->songlist2->addItem(fileName);
+                songMap[fileName] = filePath;
             }
         }
         loadFile.close();
@@ -40,7 +48,9 @@ void MainWindow::on_adds_clicked()
 
     if (!filePath.isEmpty()) {
         QFileInfo fileInfo(filePath);
-        ui->songlist2->addItem(fileInfo.fileName());
+        QString fileName = fileInfo.fileName();
+        ui->songlist2->addItem(fileName);
+        songMap[fileName] = filePath;
 
         // Save the full path to a file
         QFile saveFile("songs.txt");
@@ -58,6 +68,25 @@ void MainWindow::onSongSelected(QListWidgetItem *item)
     ui->songname->setText(item->text());
 }
 
+void MainWindow::on_play_clicked()
+{
+    QListWidgetItem *item = ui->songlist2->currentItem();
+    if (!item) return;
 
+    QString fileName = item->text();
+    QString filePath = songMap.value(fileName);
 
+    if (!filePath.isEmpty()) {
+        player->setSource(QUrl::fromLocalFile(filePath));
+        player->play();
+        ui->curentlyplaying->setText("Playing: " + fileName);
+    }
+}
 
+void MainWindow::on_pause_clicked()
+{
+    if (player->playbackState() == QMediaPlayer::PlayingState) {
+        player->pause();
+        ui->curentlyplaying->setText("Paused");
+    }
+}

@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMediaPlayer>
+#include <QMap>
 #include <QListWidgetItem>
 
 QT_BEGIN_NAMESPACE
@@ -15,14 +17,19 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
     void on_adds_clicked();
     void onSongSelected(QListWidgetItem *item);
+    void on_play_clicked();
+    void on_pause_clicked();
 
 private:
     Ui::musicplayer *ui;
+    QMediaPlayer *player;
+    QMap<QString, QString> songMap; // Maps displayed name to full path
 };
+
 #endif // MAINWINDOW_H
