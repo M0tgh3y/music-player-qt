@@ -31,6 +31,9 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     connect(ui->songlist2, &QListWidget::itemClicked, this, &MainWindow::onSongSelected);
+    connect(ui->play, &QPushButton::clicked, this, &MainWindow::on_play_clicked);
+    connect(ui->pause, &QPushButton::clicked, this, &MainWindow::on_pause_clicked);
+
 }
 
 MainWindow::~MainWindow()
