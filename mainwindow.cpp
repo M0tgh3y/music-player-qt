@@ -4,6 +4,7 @@
 #include <QFileInfo>
 #include <QMediaPlayer>
 #include <QUrl>
+#include <QAudioOutput>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -13,6 +14,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Initialize player
     player = new QMediaPlayer(this);
+
+    // Audio output setup (Qt 6+ requirement)
+    audioOutput = new QAudioOutput(this);
+    audioOutput->setVolume(1.0); // Full volume
+    player->setAudioOutput(audioOutput);
+
+    connect(player, &QMediaPlayer::mediaStatusChanged, this, [](QMediaPlayer::MediaStatus status){
+        qDebug() << "Media status changed:" << status;
+    });
+
 
     // Load songs from file
     QFile loadFile("songs.txt");

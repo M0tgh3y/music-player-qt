@@ -29,6 +29,8 @@ private slots:
 private:
     Ui::musicplayer *ui;
     QMediaPlayer *player;
+    QAudioOutput *audioOutput; // Add this line
+
     QMap<QString, QString> songMap; // Maps displayed name to full path
 };
 
