@@ -80,11 +80,18 @@ void MainWindow::on_play_clicked()
     QString filePath = songMap.value(fileName);
 
     if (!filePath.isEmpty()) {
+        qDebug() << "Trying to play:" << filePath;
+
         player->setSource(QUrl::fromLocalFile(filePath));
         player->play();
+
+        qDebug() << "Media status:" << player->mediaStatus();
+        qDebug() << "Error:" << player->errorString();
+
         ui->curentlyplaying->setText("Playing: " + fileName);
     }
 }
+
 
 void MainWindow::on_pause_clicked()
 {
