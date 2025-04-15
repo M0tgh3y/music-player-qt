@@ -12,20 +12,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Initialize player
     player = new QMediaPlayer(this);
 
-    // Audio output setup (Qt 6+ requirement)
     audioOutput = new QAudioOutput(this);
-    audioOutput->setVolume(1.0); // Full volume
+    audioOutput->setVolume(1.0);
     player->setAudioOutput(audioOutput);
 
     connect(player, &QMediaPlayer::mediaStatusChanged, this, [](QMediaPlayer::MediaStatus status){
         qDebug() << "Media status changed:" << status;
     });
 
-
-    // Load songs from file
     QFile loadFile("songs.txt");
     if (loadFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream in(&loadFile);
@@ -44,12 +40,17 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->songlist2, &QListWidget::itemClicked, this, &MainWindow::onSongSelected);
     connect(ui->play, &QPushButton::clicked, this, &MainWindow::on_play_clicked);
     connect(ui->pause, &QPushButton::clicked, this, &MainWindow::on_pause_clicked);
-
+    connect(ui->next, &QPushButton::clicked, this, &MainWindow::on_next_clicked);
+    connect(ui->previous, &QPushButton::clicked, this, &MainWindow::on_previous_clicked);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+int MainWindow::getCurrentIndex() const {
+    return ui->songlist2->currentRow();
 }
 
 void MainWindow::on_adds_clicked()
@@ -111,3 +112,29 @@ void MainWindow::on_pause_clicked()
         ui->curentlyplaying->setText("Paused");
     }
 }
+
+void MainWindow::on_previous_clicked()
+{
+    int currentIndex = getCurrentIndex();
+    int count = ui->songlist2->count();
+    if (count == 0) return;
+
+    int prevIndex = (currentIndex - 1 + count) % count;
+    ui->songlist2->setCurrentRow(prevIndex);
+    onSongSelected(ui->songlist2->currentItem());
+    on_play_clicked();
+}
+
+
+void MainWindow::on_next_clicked()
+{
+    int currentIndex = getCurrentIndex();
+    int count = ui->songlist2->count();
+    if (count == 0) return;
+
+    int nextIndex = (currentIndex + 1) % count;
+    ui->songlist2->setCurrentRow(nextIndex);
+    onSongSelected(ui->songlist2->currentItem());
+    on_play_clicked();
+}
+

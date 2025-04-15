@@ -22,16 +22,26 @@ public:
 
 private slots:
     void on_adds_clicked();
+
     void onSongSelected(QListWidgetItem *item);
+
     void on_play_clicked();
+
     void on_pause_clicked();
+
+    void on_last_clicked();
+
+    void on_previous_clicked();
+
+    void on_next_clicked();
 
 private:
     Ui::musicplayer *ui;
     QMediaPlayer *player;
-    QAudioOutput *audioOutput; // Add this line
+    QAudioOutput *audioOutput;
+    QMap<QString, QString> songMap;
 
-    QMap<QString, QString> songMap; // Maps displayed name to full path
+    int getCurrentIndex() const;
 };
 
 #endif // MAINWINDOW_H

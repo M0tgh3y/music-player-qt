@@ -45,7 +45,7 @@ public:
     QPushButton *play;
     QPushButton *pause;
     QPushButton *stop;
-    QPushButton *last;
+    QPushButton *previous;
     QPushButton *next;
     QPushButton *repeat;
     QSlider *slider;
@@ -194,13 +194,13 @@ public:
         QIcon icon5(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStop));
         stop->setIcon(icon5);
         stop->setIconSize(QSize(30, 30));
-        last = new QPushButton(things);
-        last->setObjectName("last");
-        last->setGeometry(QRect(158, 10, 30, 30));
-        last->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        previous = new QPushButton(things);
+        previous->setObjectName("previous");
+        previous->setGeometry(QRect(158, 10, 30, 30));
+        previous->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         QIcon icon6(QIcon::fromTheme(QIcon::ThemeIcon::MediaSeekBackward));
-        last->setIcon(icon6);
-        last->setIconSize(QSize(30, 30));
+        previous->setIcon(icon6);
+        previous->setIconSize(QSize(30, 30));
         next = new QPushButton(things);
         next->setObjectName("next");
         next->setGeometry(QRect(204, 10, 30, 30));
@@ -357,7 +357,7 @@ public:
         play->setText(QString());
         pause->setText(QString());
         stop->setText(QString());
-        last->setText(QString());
+        previous->setText(QString());
         next->setText(QString());
         repeat->setText(QString());
         time->setText(QCoreApplication::translate("musicplayer", "00:00:00 / 00:00:00", nullptr));

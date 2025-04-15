@@ -419,7 +419,7 @@ border-radius: 10px;
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="last">
+     <widget class="QPushButton" name="previous">
       <property name="geometry">
        <rect>
         <x>158</x>
