@@ -117,9 +117,13 @@ void MainWindow::on_previous_clicked()
 {
     int currentIndex = getCurrentIndex();
     int count = ui->songlist2->count();
+    qDebug() << "Current index:" << currentIndex << ", Count:" << count;
+
     if (count == 0) return;
 
     int prevIndex = (currentIndex - 1 + count) % count;
+    qDebug() << "Previous index:" << prevIndex;
+
     ui->songlist2->setCurrentRow(prevIndex);
     onSongSelected(ui->songlist2->currentItem());
     on_play_clicked();
