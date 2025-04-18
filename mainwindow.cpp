@@ -78,9 +78,20 @@ void MainWindow::on_adds_clicked()
 
 void MainWindow::onSongSelected(QListWidgetItem *item)
 {
-    ui->curentlyplaying->setText(item->text());
-    ui->songname->setText(item->text());
+    if (!item) return;
+
+    QString fileName = item->text();
+    QString filePath = songMap.value(fileName);
+
+    if (!filePath.isEmpty()) {
+        player->stop();
+        player->setSource(QUrl::fromLocalFile(filePath));
+
+        ui->curentlyplaying->setText(fileName);
+        ui->songname->setText(fileName);
+    }
 }
+
 
 void MainWindow::on_play_clicked()
 {
