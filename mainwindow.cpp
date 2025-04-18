@@ -67,7 +67,6 @@ void MainWindow::on_adds_clicked()
         ui->songlist2->addItem(fileName);
         songMap[fileName] = filePath;
 
-        // Save the full path to a file
         QFile saveFile("songs.txt");
         if (saveFile.open(QIODevice::Append | QIODevice::Text)) {
             QTextStream out(&saveFile);
@@ -92,17 +91,18 @@ void MainWindow::on_play_clicked()
     QString filePath = songMap.value(fileName);
 
     if (!filePath.isEmpty()) {
-        qDebug() << "Trying to play:" << filePath;
-
+        player->stop();
         player->setSource(QUrl::fromLocalFile(filePath));
         player->play();
 
+        qDebug() << "Trying to play:" << filePath;
         qDebug() << "Media status:" << player->mediaStatus();
         qDebug() << "Error:" << player->errorString();
 
         ui->curentlyplaying->setText("Playing: " + fileName);
     }
 }
+
 
 
 void MainWindow::on_pause_clicked()
@@ -124,11 +124,12 @@ void MainWindow::on_previous_clicked()
     int prevIndex = (currentIndex - 1 + count) % count;
     qDebug() << "Previous index:" << prevIndex;
 
+    player->stop();
+
     ui->songlist2->setCurrentRow(prevIndex);
     onSongSelected(ui->songlist2->currentItem());
     on_play_clicked();
 }
-
 
 void MainWindow::on_next_clicked()
 {
