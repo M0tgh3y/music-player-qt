@@ -5,6 +5,7 @@
 #include <QMediaPlayer>
 #include <QUrl>
 #include <QAudioOutput>
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -42,6 +43,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pause, &QPushButton::clicked, this, &MainWindow::on_pause_clicked);
     connect(ui->next, &QPushButton::clicked, this, &MainWindow::on_next_clicked);
     connect(ui->previous, &QPushButton::clicked, this, &MainWindow::on_previous_clicked);
+    connect(player, &QMediaPlayer::errorOccurred, this, [](QMediaPlayer::Error error, const QString &errorString){
+        qDebug() << "Playback error:" << error << "-" << errorString;
+    });
+
 }
 
 MainWindow::~MainWindow()
@@ -84,8 +89,10 @@ void MainWindow::onSongSelected(QListWidgetItem *item)
     QString filePath = songMap.value(fileName);
 
     if (!filePath.isEmpty()) {
-        player->stop();
+        player->stop(); // 💡 Important to reset playback state
+
         player->setSource(QUrl::fromLocalFile(filePath));
+        qDebug() << "Selected song path:" << filePath;
 
         ui->curentlyplaying->setText(fileName);
         ui->songname->setText(fileName);
@@ -93,19 +100,24 @@ void MainWindow::onSongSelected(QListWidgetItem *item)
 }
 
 
+
 void MainWindow::on_play_clicked()
 {
     if (player->source().isEmpty()) return;
 
-    player->play();
-    qDebug() << "Playing:" << player->source();
-    qDebug() << "Media status:" << player->mediaStatus();
-    qDebug() << "Error:" << player->errorString();
+    QTimer::singleShot(100, this, [this]() {
+        player->play();
+        QString filePath = player->source().toLocalFile();
+        QString fileName = QFileInfo(filePath).fileName();
 
-    QString filePath = player->source().toLocalFile();
-    QString fileName = QFileInfo(filePath).fileName();
-    ui->curentlyplaying->setText("Playing: " + fileName);
+        qDebug() << "Playing:" << filePath;
+        qDebug() << "Media status:" << player->mediaStatus();
+        qDebug() << "Error:" << player->errorString();
+
+        ui->curentlyplaying->setText("Playing: " + fileName);
+    });
 }
+
 
 void MainWindow::on_pause_clicked()
 {
@@ -122,11 +134,11 @@ void MainWindow::on_previous_clicked()
     if (count == 0) return;
 
     int prevIndex = (currentIndex - 1 + count) % count;
-
     ui->songlist2->setCurrentRow(prevIndex);
     onSongSelected(ui->songlist2->currentItem());
     on_play_clicked();
 }
+
 
 void MainWindow::on_next_clicked()
 {
