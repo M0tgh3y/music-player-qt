@@ -95,26 +95,17 @@ void MainWindow::onSongSelected(QListWidgetItem *item)
 
 void MainWindow::on_play_clicked()
 {
-    QListWidgetItem *item = ui->songlist2->currentItem();
-    if (!item) return;
+    if (player->source().isEmpty()) return;
 
-    QString fileName = item->text();
-    QString filePath = songMap.value(fileName);
+    player->play();
+    qDebug() << "Playing:" << player->source();
+    qDebug() << "Media status:" << player->mediaStatus();
+    qDebug() << "Error:" << player->errorString();
 
-    if (!filePath.isEmpty()) {
-        player->stop();
-        player->setSource(QUrl::fromLocalFile(filePath));
-        player->play();
-
-        qDebug() << "Trying to play:" << filePath;
-        qDebug() << "Media status:" << player->mediaStatus();
-        qDebug() << "Error:" << player->errorString();
-
-        ui->curentlyplaying->setText("Playing: " + fileName);
-    }
+    QString filePath = player->source().toLocalFile();
+    QString fileName = QFileInfo(filePath).fileName();
+    ui->curentlyplaying->setText("Playing: " + fileName);
 }
-
-
 
 void MainWindow::on_pause_clicked()
 {
@@ -128,14 +119,9 @@ void MainWindow::on_previous_clicked()
 {
     int currentIndex = getCurrentIndex();
     int count = ui->songlist2->count();
-    qDebug() << "Current index:" << currentIndex << ", Count:" << count;
-
     if (count == 0) return;
 
     int prevIndex = (currentIndex - 1 + count) % count;
-    qDebug() << "Previous index:" << prevIndex;
-
-    player->stop();
 
     ui->songlist2->setCurrentRow(prevIndex);
     onSongSelected(ui->songlist2->currentItem());
