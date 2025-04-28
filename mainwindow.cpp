@@ -152,3 +152,9 @@ void MainWindow::on_next_clicked()
     on_play_clicked();
 }
 
+
+void MainWindow::on_repeat_clicked()
+{
+
+}
+
