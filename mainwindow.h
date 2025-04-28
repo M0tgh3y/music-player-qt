@@ -35,11 +35,14 @@ private slots:
 
     void on_next_clicked();
 
+    void on_repeat_clicked();
+
 private:
     Ui::musicplayer *ui;
     QMediaPlayer *player;
     QAudioOutput *audioOutput;
     QMap<QString, QString> songMap;
+    bool repeatEnabled = false;
 
     int getCurrentIndex() const;
 };

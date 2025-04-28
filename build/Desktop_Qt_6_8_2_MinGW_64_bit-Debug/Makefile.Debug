@@ -111,6 +111,7 @@ debug/qrc_idk.cpp: ../../idk.qrc \
 		../../icons/music2.png \
 		../../icons/Repeat-32.png \
 		../../icons/Delete-16.png \
+		../../icons/ro.png \
 		../../icons/Mute-32.png \
 		../../icons/Stop-32.png \
 		../../icons/Pause-32.png \
@@ -851,7 +852,12 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimezone.h \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/QFileInfo \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/QUrl
+		C:/Qt/6.8.2/mingw_64/include/QtCore/QUrl \
+		C:/Qt/6.8.2/mingw_64/include/QtMultimedia/QAudioOutput \
+		C:/Qt/6.8.2/mingw_64/include/QtMultimedia/qaudiooutput.h \
+		C:/Qt/6.8.2/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.8.2/mingw_64/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\..\mainwindow.cpp
 
 debug/qrc_idk.o: debug/qrc_idk.cpp 

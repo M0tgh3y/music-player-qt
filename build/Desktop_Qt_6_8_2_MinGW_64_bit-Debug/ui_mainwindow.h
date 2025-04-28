@@ -324,7 +324,7 @@ public:
         playlist->setFont(font2);
         playlist->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         playlist->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
-"background-color: #014C8F;\n"
+"background-color:rgb(255, 85, 0);\n"
 "border-radius: 10px;"));
         favo = new QPushButton(frame);
         favo->setObjectName("favo");
@@ -332,7 +332,7 @@ public:
         favo->setFont(font2);
         favo->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         favo->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
-"background-color: rgb(85, 255, 127);\n"
+"background-color: rgb(255, 170, 127);\n"
 "border-radius: 10px;"));
         musicplayer->setCentralWidget(centralwidget);
 

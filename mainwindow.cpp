@@ -155,6 +155,14 @@ void MainWindow::on_next_clicked()
 
 void MainWindow::on_repeat_clicked()
 {
+    repeatEnabled = !repeatEnabled;
 
+    if (repeatEnabled) {
+        ui->repeat->setIcon(QIcon(":/Resources/image/icons/ro.png")); // Icon when repeat is on
+    } else {
+        ui->repeat->setIcon(QIcon(":/Resources/image/icons/Play-16.png")); // Icon when repeat is off
+    }
+
+    qDebug() << "Repeat is now " << (repeatEnabled ? "enabled" : "disabled");
 }
 

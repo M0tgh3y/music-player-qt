@@ -19,5 +19,6 @@
         <file>icons/Stop Filled-32.png</file>
         <file>icons/Stop-24.png</file>
         <file>icons/Stop-32.png</file>
+        <file>icons/ro.png</file>
     </qresource>
 </RCC>
