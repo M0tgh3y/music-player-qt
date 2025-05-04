@@ -89,15 +89,16 @@ void MainWindow::onSongSelected(QListWidgetItem *item)
     QString filePath = songMap.value(fileName);
 
     if (!filePath.isEmpty()) {
-        player->stop(); // 💡 Important to reset playback state
-
+        player->stop();
         player->setSource(QUrl::fromLocalFile(filePath));
-        qDebug() << "Selected song path:" << filePath;
-
         ui->curentlyplaying->setText(fileName);
         ui->songname->setText(fileName);
+
+        player->play();
+        qDebug() << "Playing:" << filePath;
     }
 }
+
 
 
 
@@ -135,10 +136,7 @@ void MainWindow::on_previous_clicked()
 
     int prevIndex = (currentIndex - 1 + count) % count;
     ui->songlist2->setCurrentRow(prevIndex);
-    onSongSelected(ui->songlist2->currentItem());
-    on_play_clicked();
 }
-
 
 void MainWindow::on_next_clicked()
 {
@@ -148,9 +146,8 @@ void MainWindow::on_next_clicked()
 
     int nextIndex = (currentIndex + 1) % count;
     ui->songlist2->setCurrentRow(nextIndex);
-    onSongSelected(ui->songlist2->currentItem());
-    on_play_clicked();
 }
+
 
 
 void MainWindow::on_repeat_clicked()
