@@ -44,7 +44,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(player, &QMediaPlayer::errorOccurred, this, [](QMediaPlayer::Error error, const QString &errorString){
         qDebug() << "Playback error:" << error << "-" << errorString;
     });
-    connect(ui->songlist2, &QListWidget::itemClicked, this, &MainWindow::onSongSelected);
 
 }
 

@@ -23,8 +23,6 @@ public:
 private slots:
     void on_adds_clicked();
 
-    void onSongSelected(QListWidgetItem *item);
-
     void on_play_clicked();
 
     void on_pause_clicked();
