@@ -46,6 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(player, &QMediaPlayer::errorOccurred, this, [](QMediaPlayer::Error error, const QString &errorString){
         qDebug() << "Playback error:" << error << "-" << errorString;
     });
+    emit ui->songlist2->itemClicked(ui->songlist2->item(nextIndex));
 
 }
 
@@ -89,36 +90,34 @@ void MainWindow::onSongSelected(QListWidgetItem *item)
     QString filePath = songMap.value(fileName);
 
     if (!filePath.isEmpty()) {
-        player->stop();
+        player->stop(); // stop before reloading
         player->setSource(QUrl::fromLocalFile(filePath));
-        ui->curentlyplaying->setText(fileName);
-        ui->songname->setText(fileName);
+        player->play(); // play right after setting
 
-        player->play();
-        qDebug() << "Playing:" << filePath;
+        ui->curentlyplaying->setText("Playing: " + fileName);
+        ui->songname->setText(fileName);
     }
 }
 
-
-
-
 void MainWindow::on_play_clicked()
 {
-    if (player->source().isEmpty()) return;
+    QListWidgetItem* item = ui->songlist2->currentItem();
+    if (!item) return;
 
-    QTimer::singleShot(100, this, [this]() {
+    QString fileName = item->text();
+    QString filePath = songMap.value(fileName);
+
+    if (!filePath.isEmpty()) {
+        player->stop();
+        player->setSource(QUrl::fromLocalFile(filePath));
         player->play();
-        QString filePath = player->source().toLocalFile();
-        QString fileName = QFileInfo(filePath).fileName();
-
-        qDebug() << "Playing:" << filePath;
-        qDebug() << "Media status:" << player->mediaStatus();
-        qDebug() << "Error:" << player->errorString();
 
         ui->curentlyplaying->setText("Playing: " + fileName);
-    });
-}
+        ui->songname->setText(fileName);
 
+        qDebug() << "Playing:" << filePath;
+    }
+}
 
 void MainWindow::on_pause_clicked()
 {
@@ -126,16 +125,6 @@ void MainWindow::on_pause_clicked()
         player->pause();
         ui->curentlyplaying->setText("Paused");
     }
-}
-
-void MainWindow::on_previous_clicked()
-{
-    int currentIndex = getCurrentIndex();
-    int count = ui->songlist2->count();
-    if (count == 0) return;
-
-    int prevIndex = (currentIndex - 1 + count) % count;
-    ui->songlist2->setCurrentRow(prevIndex);
 }
 
 void MainWindow::on_next_clicked()
@@ -146,7 +135,21 @@ void MainWindow::on_next_clicked()
 
     int nextIndex = (currentIndex + 1) % count;
     ui->songlist2->setCurrentRow(nextIndex);
+    onSongSelected(ui->songlist2->item(nextIndex));
 }
+
+void MainWindow::on_previous_clicked()
+{
+    int currentIndex = getCurrentIndex();
+    int count = ui->songlist2->count();
+    if (count == 0) return;
+
+    int prevIndex = (currentIndex - 1 + count) % count;
+    ui->songlist2->setCurrentRow(prevIndex);
+    onSongSelected(ui->songlist2->item(prevIndex));
+}
+
+
 
 
 
