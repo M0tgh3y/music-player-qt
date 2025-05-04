@@ -37,6 +37,8 @@ private slots:
 
     void on_repeat_clicked();
 
+    void playSongAtRow(int row);
+
 private:
     Ui::musicplayer *ui;
     QMediaPlayer *player;

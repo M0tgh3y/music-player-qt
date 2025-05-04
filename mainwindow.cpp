@@ -14,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     player = new QMediaPlayer(this);
-
     audioOutput = new QAudioOutput(this);
     audioOutput->setVolume(1.0);
     player->setAudioOutput(audioOutput);
@@ -38,7 +37,6 @@ MainWindow::MainWindow(QWidget *parent)
         loadFile.close();
     }
 
-    connect(ui->songlist2, &QListWidget::itemClicked, this, &MainWindow::onSongSelected);
     connect(ui->play, &QPushButton::clicked, this, &MainWindow::on_play_clicked);
     connect(ui->pause, &QPushButton::clicked, this, &MainWindow::on_pause_clicked);
     connect(ui->next, &QPushButton::clicked, this, &MainWindow::on_next_clicked);
@@ -46,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(player, &QMediaPlayer::errorOccurred, this, [](QMediaPlayer::Error error, const QString &errorString){
         qDebug() << "Playback error:" << error << "-" << errorString;
     });
-    emit ui->songlist2->itemClicked(ui->songlist2->item(nextIndex));
+    connect(ui->songlist2, &QListWidget::itemClicked, this, &MainWindow::onSongSelected);
 
 }
 
@@ -82,26 +80,12 @@ void MainWindow::on_adds_clicked()
     }
 }
 
-void MainWindow::onSongSelected(QListWidgetItem *item)
+void MainWindow::playSongAtRow(int row)
 {
-    if (!item) return;
+    if (row < 0 || row >= ui->songlist2->count()) return;
 
-    QString fileName = item->text();
-    QString filePath = songMap.value(fileName);
-
-    if (!filePath.isEmpty()) {
-        player->stop(); // stop before reloading
-        player->setSource(QUrl::fromLocalFile(filePath));
-        player->play(); // play right after setting
-
-        ui->curentlyplaying->setText("Playing: " + fileName);
-        ui->songname->setText(fileName);
-    }
-}
-
-void MainWindow::on_play_clicked()
-{
-    QListWidgetItem* item = ui->songlist2->currentItem();
+    ui->songlist2->setCurrentRow(row);
+    QListWidgetItem* item = ui->songlist2->item(row);
     if (!item) return;
 
     QString fileName = item->text();
@@ -114,9 +98,14 @@ void MainWindow::on_play_clicked()
 
         ui->curentlyplaying->setText("Playing: " + fileName);
         ui->songname->setText(fileName);
-
-        qDebug() << "Playing:" << filePath;
+        qDebug() << "Playing song at row:" << row << " - " << fileName;
     }
+}
+
+void MainWindow::on_play_clicked()
+{
+    int row = getCurrentIndex();
+    playSongAtRow(row);
 }
 
 void MainWindow::on_pause_clicked()
@@ -134,8 +123,7 @@ void MainWindow::on_next_clicked()
     if (count == 0) return;
 
     int nextIndex = (currentIndex + 1) % count;
-    ui->songlist2->setCurrentRow(nextIndex);
-    onSongSelected(ui->songlist2->item(nextIndex));
+    playSongAtRow(nextIndex);
 }
 
 void MainWindow::on_previous_clicked()
@@ -145,24 +133,18 @@ void MainWindow::on_previous_clicked()
     if (count == 0) return;
 
     int prevIndex = (currentIndex - 1 + count) % count;
-    ui->songlist2->setCurrentRow(prevIndex);
-    onSongSelected(ui->songlist2->item(prevIndex));
+    playSongAtRow(prevIndex);
 }
-
-
-
-
 
 void MainWindow::on_repeat_clicked()
 {
     repeatEnabled = !repeatEnabled;
 
     if (repeatEnabled) {
-        ui->repeat->setIcon(QIcon(":/Resources/image/icons/ro.png")); // Icon when repeat is on
+        ui->repeat->setIcon(QIcon(":/Resources/image/icons/ro.png"));
     } else {
-        ui->repeat->setIcon(QIcon(":/Resources/image/icons/Play-16.png")); // Icon when repeat is off
+        ui->repeat->setIcon(QIcon(":/Resources/image/icons/Play-16.png"));
     }
 
     qDebug() << "Repeat is now " << (repeatEnabled ? "enabled" : "disabled");
 }
-
